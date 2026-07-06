@@ -5,6 +5,9 @@ node_modules/
 .env.local
 .env.*.local
 
+# uploads
+public/uploads/
+
 # logs
 npm-debug.log*
 yarn-debug.log*
@@ -14,7 +17,12 @@ pnpm-debug.log*
 # OS / editor
 .DS_Store
 Thumbs.db
+desktop.ini
 .vscode/
+
+# debug artifacts
+.dbg/
+debug_*.txt
 
 # build output
 out/
