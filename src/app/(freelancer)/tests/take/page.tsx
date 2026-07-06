@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function TakeTestPage() {
+function TakeTestPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const testId = searchParams.get('testId');
@@ -210,5 +210,19 @@ export default function TakeTestPage() {
       </>
       )}
     </div>
+  );
+}
+
+export default function TakeTestPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex justify-center py-12">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      }
+    >
+      <TakeTestPageContent />
+    </Suspense>
   );
 }

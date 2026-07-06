@@ -694,7 +694,7 @@ export default function ProjectDetail() {
                   <option key={party._id} value={party._id}>{party.name}</option>
                 ))}
               </select>
-              <button type="button" onClick={applyPartyTemplate} className="btn btn-secondary px-4">Masukkan Party</button>
+              <button type="button" onClick={() => applyPartyTemplate()} className="btn btn-secondary px-4">Masukkan Party</button>
             </div>
             <p className="text-[11px] text-gray-400 mt-1">Member party yang posisinya tidak cocok dengan requirement proyek otomatis tidak dimasukkan.</p>
           </div>

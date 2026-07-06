@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Loader2, Plus, Trash2, Users } from 'lucide-react';
 
@@ -16,7 +16,7 @@ const getUserPositions = (user: any) => {
   return [];
 };
 
-export default function CreatePartyPage() {
+function CreatePartyPageContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const invitedUserId = searchParams.get('invite') || '';
@@ -247,5 +247,19 @@ export default function CreatePartyPage() {
         </div>
       </form>
     </div>
+  );
+}
+
+export default function CreatePartyPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex justify-center py-12">
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
+        </div>
+      }
+    >
+      <CreatePartyPageContent />
+    </Suspense>
   );
 }
